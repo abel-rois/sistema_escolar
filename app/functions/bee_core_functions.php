@@ -998,7 +998,7 @@ function get_logo() {
 function get_favicon()
 {
 	$path        = FAVICON; // path del archivo favicon
-	$favicon     = 'favicon.ico'; // nombre del archivo favicon
+	$favicon     = 'favicon.png'; // nombre del archivo favicon
 	$type        = '';
 	$href        = '';
 	$placeholder = '<link rel="icon" type="%s" href="%s">';
