@@ -22,9 +22,9 @@ class materiasController extends Controller {
   {
     $data = 
     [
-      'title' => 'Todas las materias',
-      'slug' => 'materias',
-      'msg'   => 'Bienvenido al controlador de "materias", se ha creado con éxito si ves este mensaje.',
+      'title'    => 'Todas las materias',
+      'slug'     => 'materias',
+      'button'   => ['url' => 'materias/agregar', 'text' => '<i class="fas fa-plus"></i> Agregar materia'],
       'materias' => materiaModel::all()
     ];
     
@@ -51,6 +51,43 @@ class materiasController extends Controller {
 
   function post_agregar()
   {
+
+    try {
+      if (!check_posted_data(['csrf','nombre','descripcion'], $_POST) || !Csrf::validate($_POST['csrf'])) { 
+        throw new Exception('Acceso no autorizado');
+      }
+  
+      $nombre = clean($_POST["nombre"]);
+      $descripcion = clean($_POST["descripcion"]);
+
+      //validar la longitud del nombre
+      if (strlen($nombre) < 5) {
+        throw new Exception('El nombre de la materia es demasiado corto');
+      }
+
+      $data =
+      [
+        'nombre' => $nombre,
+        'descripcion' => $descripcion,
+        'creado' => now()
+      ];
+
+
+      //Insertar a la base de datos
+      if (!$id = materiaModel::add(materiaModel::$t1, $data)) {
+        throw new Exception('Hubo un error al guardar el registro');        
+      }
+
+      Flasher::new(sprintf('Materia <b>%s</b> agregada con éxito.', $nombre), 'sucess');
+      Redirect::back();
+
+    } catch (PDOException $e) {
+      Flasher::new(e->getMessage(), 'danger');
+      Redirect::back();
+    } catch (Exception $e) {
+      Flasher::new(e->getMessage(), 'danger');
+      Redirect::back();
+    }
 
   }
 
