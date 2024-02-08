@@ -84,8 +84,27 @@ $(document).ready(function() {
   init_summernote();
   init_tooltips();
   test_ajax();
-  $('#dataTable').DataTable();
-
+  $('#dataTable').DataTable(
+  {
+    language: {
+      search:         "Buscar&nbsp;:",
+      lenghtMenu:     "Mostrar _MENU_ registros",
+      info:           "Mostrando _START_ a _END_ de _TOTAL_ registros.",
+      infoEmpty:      "Mostrando 0 registros.",
+      infoFiltered:   "(Filtrando de _MAX_ registros en total)", 
+      infoPostFix:    "",
+      zeroRecords:    "No hay registros encontrados.",
+      emptyTable:     "No hay información.",
+      paginate: {
+        first:        "Primera",
+        previous:     "Anterior",
+        next:         "Siguiente",
+        last:         "Última"
+      }
+    },
+    paging: false
+  }
+);
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
   ///////// NO REQUERIDOS, SOLO PARA EL PROYECTO DEMO DE GASTOS E INGRESOS

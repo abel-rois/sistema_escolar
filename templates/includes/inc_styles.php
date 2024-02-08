@@ -15,6 +15,10 @@
 <!-- Custom styles for this template-->
 <link href="<?php echo CSS.'sb-admin-2.min.css'; ?>" rel="stylesheet">
 
+<!-- ESTILOS DE PLUGINS-->
+
+<link href="<?php echo ASSETS.'vendor/datatables/dataTables.bootstrap4.min.css'; ?>" rel="stylesheet">
+
 <!-- Estilos registrados manualmente -->
 <?php echo load_styles(); ?>
 

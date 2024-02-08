@@ -13,18 +13,21 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse show" id="collapseCardExample">
                                     <div class="card-body">
-                                        <form action="materias/post_agregar" method="post">
+                                        <form action="materias/post_editar" method="post">
                                             <?php echo insert_inputs(); ?>
+                                            <input type="hidden" name="id" value="<?php echo $d->m->id; ?>" required>
+
                                             <div class="form-group">
                                                 <label for="Nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $d->m->nombre; ?>" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="descripcion">Descripción</label>
-                                                <textarea name="descripcion" id="descripcion" cols="10" rows="5" class="form-control"></textarea>
+                                                <textarea name="descripcion" id="descripcion" cols="10" rows="5" class="form-control"><?php echo $d->m->descripcion; ?></textarea>
                                             </div>
-                                            <button class="btn btn-success" type="submit">Guardar registro</button>
+
+                                            <button class="btn btn-success" type="submit">Guardar</button>
                                         </form>
                                     </div>
                                 </div>

@@ -25,7 +25,7 @@ class materiasController extends Controller {
       'title'    => 'Todas las materias',
       'slug'     => 'materias',
       'button'   => ['url' => 'materias/agregar', 'text' => '<i class="fas fa-plus"></i> Agregar materia'],
-      'materias' => materiaModel::all()
+      'materias' => materiaModel::all_paginated()
     ];
     
     // Descomentar vista si requerida
